@@ -3,21 +3,17 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
-using Lsjwzh.Widget.MaterialLoadingProgressBar;
-using NavDrawer.Interface;
+using NavDrawer.Adapter;
 using NavDrawer.Model;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
-using Refit;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
-using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using static Android.Widget.AdapterView;
@@ -28,6 +24,7 @@ namespace NavDrawer.Fragments
     {
         //IGitHubApi gitHubApi;
         List<User> users = new List<User>();
+        List<Pegawai> pegawaiList;
         List<string> user_names = new List<string>();
         IListAdapter ListAdapter;
         ListView listView;
@@ -35,6 +32,7 @@ namespace NavDrawer.Fragments
         int progressValue = 0;
         private EditText _inputSearch;
         private ArrayAdapter<string> _adapter;
+        Adapter_Pegawai adapter;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -65,17 +63,6 @@ namespace NavDrawer.Fragments
 
             Activity.RunOnUiThread(async () =>
             {
-                //ApiResponse response = await gitHubApi.GetUser();
-                //users = response.items;
-
-                //foreach (User user in users)
-                //{
-                //    user_names.Add(user.ToString());
-                //}
-
-                //ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleListItem1, user_names);
-                //listView.Adapter = ListAdapter;
-
                 Uri geturi = new Uri("http://api-eabsen-merauke.somee.com/api/Pegawai"); //replace your xml url  
                 HttpClient client = new HttpClient();
                 HttpResponseMessage responseGet = await client.GetAsync(geturi);
@@ -93,8 +80,8 @@ namespace NavDrawer.Fragments
                     string[] arr = XDocument.Parse(xml).Descendants("NAMA_PEGAWAI")
                                         .Select(element => element.Value).ToArray();
 
-                    ListAdapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleListItem1, arr);
-                    listView.Adapter = ListAdapter;
+                    adapter = new Adapter_Pegawai(Activity, Resource.Layout.PegawaiModel, customers);
+                    listView.Adapter = adapter;
                 }
 
                 circleprogressbar.Visibility = ViewStates.Invisible;
@@ -117,7 +104,7 @@ namespace NavDrawer.Fragments
                 HttpResponseMessage responseGet = await client.GetAsync(geturi);
                 string response = await responseGet.Content.ReadAsStringAsync();
 
-                List<Pegawai> PegawaiList = new List<Pegawai>();
+                pegawaiList = new List<Pegawai>();
                 var customers = JsonConvert.DeserializeObject<List<Pegawai>>(response);
                 XmlSerializer xmlSerializer = new XmlSerializer(customers.GetType());
 
@@ -125,13 +112,46 @@ namespace NavDrawer.Fragments
                 {
                     xmlSerializer.Serialize(textWriter, customers);
                     var xml = textWriter.ToString();
-
+                    
                     string[] arr = XDocument.Parse(xml).Descendants("NAMA_PEGAWAI")
                                         .Select(element => element.Value).ToArray();
 
-                    _adapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleListItem1, arr);
-                    listView.Adapter = _adapter;
-                    _adapter.Filter.InvokeFilter(_inputSearch.Text);
+
+
+                    JArray jsonArray = JArray.Parse(response);
+
+                    int count = jsonArray.Count;
+                    JObject data = null;
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        data = JObject.Parse(jsonArray[i].ToString());
+                        var selectedItem = JsonConvert.DeserializeObject<Pegawai>(data.ToString());
+                        //Toast.MakeText(Activity, selectedItem.NAMA_PEGAWAI, ToastLength.Long).Show();
+                        pegawaiList.Add(new Pegawai { NAMA_PEGAWAI = selectedItem.NAMA_PEGAWAI, USERID=selectedItem.USERID, NAMA_SKPD= selectedItem.NAMA_SKPD });
+                    }
+
+
+                    //_adapter = new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleListItem1, arr);
+                    //listView.Adapter = _adapter;
+                    //_adapter.Filter.InvokeFilter(_inputSearch.Text);
+                    //List<Pegawai> searchedFriends = (from friend in pegawaiList
+                    //                                 where friend.NAMA_PEGAWAI == "SLAMET SIMAN SALEH"
+                    //                                 select friend).ToList();
+                    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"\d+");
+                    List<Pegawai> results = pegawaiList.FindAll(x => x.NAMA_PEGAWAI.StartsWith(_inputSearch.Text, StringComparison.InvariantCultureIgnoreCase));
+                    
+                    //Toast.MakeText(Activity, searchedFriends.ToString(), ToastLength.Long).Show();
+                    adapter = new Adapter_Pegawai(Activity, Resource.Layout.PegawaiModel, results);
+                    listView.Adapter = adapter;
+
+                    //var view = context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem2, null);
+                    //view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = item.Name;
+                    //view.FindViewById<TextView>(Android.Resource.Id.Text2).Text = item.Description;
+
+                    //adapter = new Adapter_Pegawai(Activity, customers);
+                    //listView.Adapter = adapter;
+                    //adapter.Filter.InvokeFilter(_inputSearch.Text);
                 }
 
                 circleprogressbar.Visibility = ViewStates.Invisible;
@@ -217,7 +237,7 @@ namespace NavDrawer.Fragments
                 //{
                 //    NAMA_PEGAWAI = data.ToString()
                 //};
-                
+
                 //var resultObject = jsonArray[0]
                 //      .Values<JObject>()
                 //      .Where(n => n["NAMA_PEGAWAI"].Value<string>() == Convert.ToString(listView.GetItemAtPosition(e.Position)));

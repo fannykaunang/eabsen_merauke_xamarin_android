@@ -6,6 +6,7 @@ namespace NavDrawer.Model
     {
         public int USERID { get; set; }
         public string NAMA_PEGAWAI { get; set; }
+        public string NAMA_SKPD { get; set; }
         //public string TEMPAT_LAHIR { get; set; }
         //public DateTime TGL_LAHIR { get; set; }
         //public string FOTO_FILEPATH { get; set; }

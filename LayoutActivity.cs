@@ -27,12 +27,12 @@ namespace NavDrawer
             SetContentView(Resource.Layout.activity_detail_pegawai);
             listView = FindViewById<ListView>(Resource.Id.listview_get_users);
             txtNama = FindViewById<TextView>(Resource.Id.user_profile_name);
-            txtSKPD = FindViewById<TextView>(Resource.Id.user_profile_short_bio);
+            txtSKPD = FindViewById<TextView>(Resource.Id.txtSKPD);
 
             var selectedItem = JsonConvert.DeserializeObject<Pegawai>(Intent.GetStringExtra("selectedItem"));
 
             txtNama.Text = selectedItem.NAMA_PEGAWAI;
-            txtSKPD.Text = "USERID: " + Convert.ToString(selectedItem.USERID);
+            txtSKPD.Text = selectedItem.NAMA_SKPD; //"USERID: " + Convert.ToString(selectedItem.USERID);
 
             //string _objectstring = Intent.GetStringExtra("selectedItemId") ?? "Tidak ada data";
             //string _objectstring2 = Intent.GetStringExtra("selectedItem") ?? "Tidak ada data";

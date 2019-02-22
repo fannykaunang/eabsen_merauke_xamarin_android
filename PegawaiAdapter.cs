@@ -83,8 +83,8 @@ namespace NavDrawer
 
         public PegawaiAdapterViewHolder(View itemView)
         {
-            NameTxt = itemView.FindViewById<TextView>(Resource.Id.nameTxt);
-            Img = itemView.FindViewById<ImageView>(Resource.Id.spacecraftImg);
+            //NameTxt = itemView.FindViewById<TextView>(Resource.Id.nameTxt);
+            //Img = itemView.FindViewById<ImageView>(Resource.Id.spacecraftImg);
 
         }
     }
