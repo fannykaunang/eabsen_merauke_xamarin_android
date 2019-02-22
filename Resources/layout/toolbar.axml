@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:minHeight="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+	    <RelativeLayout
+            android:layout_width="match_parent"
+    android:layout_height="178dp"
+    android:orientation="vertical"
+    android:weightSum="1">
+				    <ImageView
+			android:id="@+id/imgVw"
+			android:layout_alignParentRight="true"
+    android:layout_width="40sp"
+			android:layout_margin="10dp"
+        android:layout_height="40sp"
+        android:src="@drawable/logo_mrk72"
+		/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

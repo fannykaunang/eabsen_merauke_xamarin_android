@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/scroll" 
+      android:layout_width="match_parent"
+    android:background="#ddd"
+      android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ddd"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+		<TextView
+			android:id="@+id/txtAbsensiToday"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+			android:text="Absensi"
+			android:textColor="@color/primary"
+            android:textSize="18sp" />
+		<Button
+			android:layout_width="match_parent"
+			android:visibility="gone"
+            android:layout_height="match_parent"
+            android:background="@color/primary"
+            android:text="Tampilkan Absensi"
+			android:layout_marginBottom="15dp"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+			android:id ="@+id/btn_get_absensi" />
+
+			<ProgressBar 
+			android:id="@+id/progBar"
+			android:visibility="gone"
+				android:layout_gravity="center"
+			android:layout_width="match_parent" 
+				android:layout_height="match_parent"
+     android:layout_centerHorizontal="true"
+     android:layout_centerVertical="true"
+     android:layout_centerInParent="true" />
+
+			    <android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/cardview_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="18dp"
+                android:src="@drawable/icon_datang" />
+
+            <TextView
+                android:id="@+id/cardview_list_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/cardview_image"
+                android:paddingBottom="5dp"
+					android:textColor="@color/primary" 
+                android:text="Kehadiran"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txtkehadiran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardview_list_title"
+                android:layout_toRightOf="@+id/cardview_image"
+                android:text="Akumulasi Jumlah Kehadiran Pegawai dalam hari ini"
+                android:textColor="@color/primary" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/cardview_image2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="18dp"
+                android:src="@drawable/icon_pulang" />
+
+            <TextView
+                android:id="@+id/cardview_list_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/cardview_image2"
+                android:paddingBottom="5dp"
+                android:text="Kepulangan"
+					android:textColor="@color/primary"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txtkepulangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardview_list_title2"
+                android:layout_toRightOf="@+id/cardview_image2"
+                android:text="Akumulasi Jumlah Kepulangan Pegawai dalam hari ini"
+                android:textColor="@color/primary" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/cardview_image3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="18dp"
+                android:src="@drawable/icon_dinas" />
+
+            <TextView
+                android:id="@+id/cardview_list_title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/cardview_image3"
+                android:paddingBottom="5dp"
+                android:text="Dinas Luar"
+					android:textColor="@color/primary"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txtdinas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardview_list_title3"
+                android:layout_toRightOf="@+id/cardview_image3"
+                android:text="Akumulasi Jumlah Dinas Luar Pegawai dalam hari ini"
+                android:textColor="@color/primaryDark" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+	<android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/cardview_image3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="18dp"
+                android:src="@drawable/icon_sakit" />
+
+            <TextView
+                android:id="@+id/cardview_list_title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/cardview_image3"
+                android:paddingBottom="5dp"
+					android:textColor="@color/primary"
+                android:text="Sakit"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txtsakit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardview_list_title3"
+                android:layout_toRightOf="@+id/cardview_image3"
+                android:text="Akumulasi Jumlah Pegawaiyang sakit dalam hari ini"
+                android:textColor="@color/primaryDark" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+	<android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/cardview_image3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="18dp"
+                android:src="@drawable/icon_ijin_cuti" />
+
+            <TextView
+                android:id="@+id/cardview_list_title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/cardview_image3"
+                android:paddingBottom="5dp"
+                android:text="Cuti / Ijin"
+					android:textColor="@color/primary"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txtijin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardview_list_title3"
+                android:layout_toRightOf="@+id/cardview_image3"
+                android:text="Akumulasi Jumlah Pegawai yang ijin dalam hari ini"
+                android:textColor="@color/primaryDark" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+	<android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/cardview_image1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="18dp"
+                android:src="@drawable/icon_tanpaket" />
+
+            <TextView
+                android:id="@+id/cardview_list_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/cardview_image1"
+                android:paddingBottom="5dp"
+					android:textColor="@color/primary"
+                android:text="Tanpa Keterangan"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txttanpaket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardview_list_title1"
+                android:layout_toRightOf="@+id/cardview_image1"
+                android:text="Akumulasi Jumlah Pegawai yang tidak absen dalam hari ini"
+                android:textColor="@color/primary" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+		<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="16dp">
+		</RelativeLayout>
+</LinearLayout>
+</ScrollView>

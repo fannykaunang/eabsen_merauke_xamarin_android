@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_home_1"
+        android:icon="@drawable/ic_action_home"
+        android:title="@string/tab1_title" />
+    <item
+        android:id="@+id/nav_home_2"
+        android:icon="@drawable/baseline_person_white_36dp"
+        android:title="@string/tab2_title" />
+    <item
+        android:id="@+id/nav_home_3"
+        android:icon="@drawable/baseline_touch_app_white_36dp"
+        android:title="@string/tab3_title" />
+  </group>
+
+  <item android:title="Sub items">
+    <menu>
+      <item
+        android:id="@+id/nav_web"
+          android:icon="@drawable/baseline_language_black_48dp"
+          android:title="E-ABSEN Web" 
+          android:checkable="true" />
+      <item
+        android:id="@+id/nav_tentang"
+          android:icon="@drawable/baseline_info_black_48dp"
+          android:title="Tentang"
+          android:checkable="true"  />
+      <item
+        android:id="@+id/nav_kontak"
+          android:icon="@drawable/baseline_call_black_48dp"
+          android:title="Kontak"
+          android:checkable="true"  />
+    </menu>
+  </item>
+</menu>
