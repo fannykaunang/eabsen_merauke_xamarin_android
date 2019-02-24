@@ -25,9 +25,7 @@
             android:layout_height="150dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="centerCrop"
- 
-            android:src="@drawable/splash"
-            app:srcCompat="@drawable/splash" />
+            android:src="@drawable/BupatidanWakil" />
  
         <ImageButton
             android:id="@+id/user_profile_photo"

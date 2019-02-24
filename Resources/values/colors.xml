@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <!--Get colors from: http://www.materialpalette.com/-->
-  <color name="primary">#f95a20</color>
+  <color name="primary">#0841ff</color>
   <color name="primaryDark">#f46b36</color>
   <color name="accent">#FFC107</color>
   <color name="lightPrimary">#B3E5FC</color>

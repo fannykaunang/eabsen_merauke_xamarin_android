@@ -7,12 +7,10 @@ using NavDrawer.Fragments;
 using Android.Support.V7.App;
 using Android.Support.V4.View;
 using Android.Support.Design.Widget;
-using Android.Widget;
-using System;
 
 namespace NavDrawer
 {
-    [Activity(Label = "@string/app_name", MainLauncher = false, LaunchMode = LaunchMode.SingleTop, Icon = "@drawable/fingerprint_icon72")]
+    [Activity(Label = "@string/app_name", Icon = "@drawable/fingerprint_icon72")]
     public class MainActivity : AppCompatActivity
     {
         //BottomNavigationView bottomNavigation;
